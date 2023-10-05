@@ -10,7 +10,7 @@
         <h1 data-aos="fade-up">نحن نقدم حلولاً حديثة لتنمية أعمالك</h1>
         <h2 data-aos="fade-up" data-aos-delay="400">نحن فريق من المصممين الموهوبين الذين يقومون بتصميم مواقع الويب باستخدام Bootstrap</h2>
         <div data-aos="fade-up" data-aos-delay="600">
-          {{Session::get("locale")}}
+          {{  __("lang.message") }}
           <div class="text-center text-lg-start">
             <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
               <span>ابدا الان</span>

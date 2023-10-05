@@ -19,6 +19,7 @@
           <tr>
             <td>Category Name</td>
             <td>Category Display Name</td>
+            <td>Category Images</td>
             <td>Category Date</td>
             <td>Category Update Date</td>
             <td style="width: 200px" >Actions</td>
@@ -30,6 +31,11 @@
               <tr>
                 <td>{{$category->name}}</td>
                 <td>{{$category->display_name}}</td>
+                <td>{{$category->images->count()}}
+                @foreach ($category->images as $item)
+                    <img src="{{asset("images/$item->path")}}" alt="" width=20>
+                @endforeach
+                </td>
                 <td>{{$category->created_at}}</td>
                 <td>{{$category->updated_at}}</td>
                 <td style="width: 200px">
