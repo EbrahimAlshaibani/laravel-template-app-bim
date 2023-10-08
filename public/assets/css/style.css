@@ -1,3 +1,14 @@
+/**
+* Template Name: FlexStart
+* Updated: Sep 18 2023 with Bootstrap v5.3.2
+* Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
 }
@@ -181,7 +192,7 @@ section {
 
 .header .logo img {
   max-height: 40px;
-  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .header .logo span {
@@ -497,16 +508,17 @@ section {
   font-family: "Changa", sans-serif;
   font-weight: 600;
   font-size: 16px;
+  letter-spacing: 1px;
 }
 
 .hero .btn-get-started i {
-  margin-right: 5px;
+  margin-left: 5px;
   font-size: 18px;
   transition: 0.3s;
 }
 
 .hero .btn-get-started:hover i {
-  transform: translateX(-5px);
+  transform: translateX(5px);
 }
 
 .hero .hero-img {
@@ -2276,7 +2288,7 @@ section {
 .footer .footer-newsletter form input[type=submit] {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   bottom: 0;
   border: 0;
   background: none;
@@ -2318,7 +2330,7 @@ section {
 
 .footer .footer-top .footer-info .logo img {
   max-height: 40px;
-  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .footer .footer-top .footer-info .logo span {

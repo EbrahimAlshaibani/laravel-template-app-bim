@@ -32,6 +32,7 @@
         <div class="col-6">
             <label for="title">Product title</label>
             <input type="text" id="title" name="title" class="form-control">
+            <p class="text-danger">@error('title') {{$message}} @enderror</p>
         </div>
 
         <div class="col-12">

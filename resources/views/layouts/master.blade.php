@@ -18,7 +18,11 @@ dir="{{ app()->getLocale()=='ar'? 'rtl': '' }}"
   <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
   <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  @if (app()->getLocale()=="ar")
+    <link href="{{asset('assets/css/rtl_style.css')}}" rel="stylesheet">
+  @else
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  @endif
 </head>
 <body>
 

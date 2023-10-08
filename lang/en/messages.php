@@ -9,4 +9,6 @@ return [
     'German'=>'German',
     'All'=>'All',
     'Our Products'=>'Our Products',
+    'title'=>'We provide modern solutions for your Business'
+
 ];

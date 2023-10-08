@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ProductController extends Controller
 {
@@ -19,10 +20,24 @@ class ProductController extends Controller
         return view('products',compact('products','categories'));
      }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('admin.products.index',compact('products'));
+        if ($request->ajax()) {
+            $products = Product::latest()->get();
+            return DataTables::of($products)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('admin.products.index');
+
+        // $products = Product::all();
+        // return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -42,7 +57,8 @@ class ProductController extends Controller
         $request->validate([
             // 'number' =>'required|unique:products|min:5|max:5',
             'name' =>'required|max:50',
-            // 'price' =>'required|numeric',
+            'title' =>'required',
+            'sub_name' =>'required',
             // 'image' =>'image',
         ]);
         $product =  Product::create([

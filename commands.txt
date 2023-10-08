@@ -1,1 +1,7 @@
+php artisan lang:publish
+php artisan make:middleware localizationMiddleware
+
 https://github.com/mcamara/laravel-localization
+
+composer require yajra/laravel-datatables-oracle
+https://www.itsolutionstuff.com/post/laravel-9-ajax-crud-tutorial-exampleexample.html

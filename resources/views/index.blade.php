@@ -7,14 +7,18 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 d-flex flex-column justify-content-center">
-        <h1 data-aos="fade-up">نحن نقدم حلولاً حديثة لتنمية أعمالك</h1>
+        <h1 data-aos="fade-up">{{__('messages.title')}}</h1>
         <h2 data-aos="fade-up" data-aos-delay="400">نحن فريق من المصممين الموهوبين الذين يقومون بتصميم مواقع الويب باستخدام Bootstrap</h2>
         <div data-aos="fade-up" data-aos-delay="600">
-          {{  __("lang.message") }}
           <div class="text-center text-lg-start">
             <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
               <span>ابدا الان</span>
-              <i class="bi bi-arrow-left"></i>
+              @if (app()->getLocale()=="ar")
+              <i class='bi bi-arrow-left'></i>
+              @else
+              <i class="bi bi-arrow-right"></i>
+              @endif
+              
             </a>
           </div>
         </div>

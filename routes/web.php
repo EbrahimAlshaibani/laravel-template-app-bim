@@ -25,6 +25,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 // routes/web.php
+
 Route::get("locale/{lange}",[LocatizationController::class,"setLang"])->name('setLang');
 
 Route::group([

@@ -20,6 +20,22 @@ class Category extends Model
     }
     public function images(): HasManyThrough
     {
-        return $this->hasManyThrough(Image::class, Product::class);
+        return $this->hasManyThrough(Image::class,Product::class);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    // public function images(): HasManyThrough
+    // {
+    //     return $this->hasManyThrough(Image::class, Product::class);
+    // }
 }

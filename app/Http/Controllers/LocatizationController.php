@@ -12,20 +12,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class LocatizationController extends Controller
 {
     public function setLang($lang){
-        
-        
-        
-        // $url = parse_url(URL::previous());
-        // // $url_path = $url['path'];
-        // $url['path'][1] = App::getLocale()[0];
-        // $url['path'][2] = App::getLocale()[1];
-        // $url_res = $url['scheme'] . '://' . $url['host'] . ':' . $url['port'] . $url['path'];
-        // $previousUrl = parse_url(URL::previous());
-        // $previousUrl['path'][1] = $url['path'][1];
-        // $previousUrl['path'][2] = $url['path'][2];
-
-        // dd($previousUrl);
-        // return Redirect::to($url);
         App::setLocale($lang);
         Session::put('locale', $lang);
         LaravelLocalization::setLocale($lang);
