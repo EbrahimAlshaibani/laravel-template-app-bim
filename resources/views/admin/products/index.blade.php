@@ -10,8 +10,7 @@
               <th>name</th>
               <th>sub_name</th>
               <th>title</th>
-              {{-- <th>detail</th> --}}
-              <th>category_id</th>
+              <th>category_name</th>
               <th width="280px">Action</th>
           </tr>
       </thead>
@@ -177,6 +176,7 @@
           }
     });
     var table = $('.data-table').DataTable({
+        "lengthMenu": [10, 20, 50, 100],
         processing: true,
         serverSide: true,
         ajax: "{{ route('products.index') }}",
@@ -186,102 +186,9 @@
             {data: 'sub_name', name: 'sub_name'},
             {data: 'title', name: 'title'},
             // {data: 'detail', name: 'detail'},
-            {data: 'category_id', name: 'category_id'},
+            {data: 'category_name', name: 'category_name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
-    });
-
-    $('#createNewProduct').click(function () {
-
-        $('#saveBtn').val("create-product");
-
-        $('#product_id').val('');
-
-        $('#productForm').trigger("reset");
-
-        $('#modelHeading').html("Create New Product");
-
-        $('#ajaxModel').modal('show');
-
-    });
-    $('body').on('click', '.editProduct', function () {
-
-      var product_id = $(this).data('id');
-
-      $.get("{{ route('products.index') }}" +'/' + product_id +'/edit', function (data) {
-
-          $('#modelHeading').html("Edit the Product");
-
-          $('#saveBtn').val("edit-user");
-
-          $('#ajaxModel').modal('show');
-
-          $('#product_id').val(data.id);
-
-          $('#name').val(data.name);
-
-          $('#detail').val(data.detail);
-
-      })
-
-    });
-
-    $('#saveBtn').click(function (e) {
-
-        e.preventDefault();
-
-        $(this).html('Sending..');
-
-      
-
-        $.ajax({
-
-          data: $('#productForm').serialize(),
-
-          url: "{{ route('products.store') }}",
-
-          type: "POST",
-
-          dataType: 'json',
-
-          success: function (data) {
-
-       
-
-              $('#productForm').trigger("reset");
-
-              $('#ajaxModel').modal('hide');
-
-              table.draw();
-
-           
-
-          },
-
-          error: function (data) {
-
-              console.log('Error:', data);
-
-              $('#saveBtn').html('Save Changes');
-
-          }
-
-      });
-
-    });
-    $('body').on('click', '.deleteProduct', function () {
-        var product_id = $(this).data("id");
-        confirm("Are You sure want to delete !");
-        $.ajax({
-            type: "DELETE",
-            url: "{{ route('products.store') }}"+'/'+product_id,
-            success: function (data) {
-                table.draw();
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-        });
     });
   });
 </script>

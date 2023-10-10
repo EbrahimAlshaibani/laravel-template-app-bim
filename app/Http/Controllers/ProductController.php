@@ -23,12 +23,16 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $products = Product::latest()->get();
+            $products = Product::with('category')->latest()->get();
             return DataTables::of($products)
                     ->addIndexColumn()
+                    ->addColumn('category_name', function($row) {
+                        return $row->category->display_name;
+                    })
                     ->addColumn('action', function($row){
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
                            $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+                           $btn = $btn."<a href=".route('products.show',$row->id)." class='btn btn-sm btn-primary'>show</a>";
                             return $btn;
                     })
                     ->rawColumns(['action'])

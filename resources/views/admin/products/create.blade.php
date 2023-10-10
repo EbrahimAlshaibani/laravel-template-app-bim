@@ -35,6 +35,15 @@
             <p class="text-danger">@error('title') {{$message}} @enderror</p>
         </div>
 
+        <div class="col-6">
+            <label for="title">Product Images</label>
+            <select name="images[]" id="images" class="form-select">
+                <option value="">---</option>
+            </select>
+            <p class="text-danger">@error('title') {{$message}} @enderror</p>
+        </div>
+
+
         <div class="col-12">
             <label for="detail">Product detail</label>
             <textarea name="detail" id="detail" class="form-control" cols="30" rows="10">
@@ -51,4 +60,39 @@
         <button type="submit" class="btn btn-success btn-sm mt-2">Add</button>
     
     </form>
+@endsection
+
+@section('scripts')
+    <script>
+    $(document).ready(function() {
+    $('#category').on('change', function() {
+        var categoryId = $(this).val();
+        $.ajax({
+            url: '/get-images/'+categoryId, 
+            type: 'GET',
+            dataType: 'json',
+            // in case of post put delete methods
+            // data: {
+            //     category_id: categoryId
+            // },
+            // headers: {
+            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Add CSRF token for Laravel
+            // },
+            success: function(data) {
+                $('#images').empty();
+                if (data && data.length > 0) {
+                    data.forEach(function(image) {
+                        $('#images').append('<option value="' + image.id + '">' + image.path + '</option>');
+                    });
+                } else {
+                    $('#images').append('<option value="">No images available</option>');
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+    </script>
 @endsection

@@ -29,11 +29,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
+        $category = Category::create([
             'name'=>$request->name,
             'display_name'=>$request->display_name,
         ]);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')
+        ->with('message',"تم اضافة $category->name بنجاح");
     }
 
     /**
@@ -60,7 +61,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->display_name = $request->display_name;
         $category->update();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')
+        ->with('message',"تم تعديل $category->name بنجاح");
     }
 
     /**

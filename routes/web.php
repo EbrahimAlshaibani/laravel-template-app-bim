@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LocatizationController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,7 @@ Route::group([
     Auth::routes();
 
     Route::middleware(['auth'])->group(function () {
+        Route::get('/get-images/{id}', [ImageController::class,'getImages']);
         Route::resource('products',ProductController::class);
         Route::resource('categories',CategoryController::class);
         Route::get('/home', [HomeController::class, 'index'])->name('home');

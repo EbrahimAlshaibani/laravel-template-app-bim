@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,12 @@ class ImageController extends Controller
     {
         //
     }
-
+    public function getImages($id)
+    {
+        $category = Category::find($id);
+        $images = $category->images;
+        return response()->json($images);
+    }
     /**
      * Show the form for creating a new resource.
      */

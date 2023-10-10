@@ -92,6 +92,12 @@
         </nav>
 
         <main class="py-4 container">
+            @if ($message=Session::get('message'))
+                <div class="alert alert-primary" role="alert">
+                    {{$message}}
+                </div>
+                
+            @endif
             @yield('content')
         </main>
     </div>
